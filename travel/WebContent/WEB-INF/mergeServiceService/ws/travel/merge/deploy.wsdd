@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from mergeServiceService WSDL service -->
+
+  <service name="mergeService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://merge.travel.ws"/>
+      <parameter name="wsdlServiceElement" value="mergeServiceService"/>
+      <parameter name="schemaQualified" value="http://merge.travel.ws"/>
+      <parameter name="wsdlServicePort" value="mergeService"/>
+      <parameter name="className" value="ws.travel.merge.mergeService"/>
+      <parameter name="wsdlPortType" value="mergeService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://merge.travel.ws" xmlns:retNS="http://merge.travel.ws" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="merge" qname="operNS:merge" returnQName="retNS:mergeReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://merge.travel.ws" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:ticketInfo" type="tns:string"/>
+        <parameter xmlns:pns="http://merge.travel.ws" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:hotelInfo" type="tns:string"/>
+        <parameter xmlns:pns="http://merge.travel.ws" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:carInfo" type="tns:string"/>
+        <parameter xmlns:pns="http://merge.travel.ws" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:guideInfo" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="merge"/>
+
+  </service>
+</deployment>

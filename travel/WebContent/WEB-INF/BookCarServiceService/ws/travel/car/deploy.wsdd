@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from BookCarServiceService WSDL service -->
+
+  <service name="BookCarService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://car.travel.ws"/>
+      <parameter name="wsdlServiceElement" value="BookCarServiceService"/>
+      <parameter name="schemaQualified" value="http://car.travel.ws"/>
+      <parameter name="wsdlServicePort" value="BookCarService"/>
+      <parameter name="className" value="ws.travel.car.BookCarService"/>
+      <parameter name="wsdlPortType" value="BookCarService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://car.travel.ws" xmlns:retNS="http://car.travel.ws" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="bookCar" qname="operNS:bookCar" returnQName="retNS:bookCarReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://car.travel.ws" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:size" type="tns:string"/>
+        <parameter xmlns:pns="http://car.travel.ws" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:isAT" type="tns:boolean"/>
+        <parameter xmlns:pns="http://car.travel.ws" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:cityBook" type="tns:string"/>
+        <parameter xmlns:pns="http://car.travel.ws" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:cityBack" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="bookCar"/>
+
+  </service>
+</deployment>

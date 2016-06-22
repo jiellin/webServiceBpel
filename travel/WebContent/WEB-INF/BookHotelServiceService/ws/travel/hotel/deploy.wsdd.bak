@@ -1,0 +1,30 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from BookHotelServiceService WSDL service -->
+
+  <service name="BookHotelService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://hotel.travel.ws"/>
+      <parameter name="wsdlServiceElement" value="BookHotelServiceService"/>
+      <parameter name="schemaQualified" value="http://hotel.travel.ws"/>
+      <parameter name="wsdlServicePort" value="BookHotelService"/>
+      <parameter name="className" value="ws.travel.hotel.BookHotelServiceSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="BookHotelService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="bookHotel" qname="operNS:bookHotel" xmlns:operNS="http://hotel.travel.ws" returnQName="retNS:bookHotelReturn" xmlns:retNS="http://hotel.travel.ws" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:date" xmlns:pns="http://hotel.travel.ws" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:city" xmlns:pns="http://hotel.travel.ws" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="bookHotel"/>
+
+  </service>
+</deployment>

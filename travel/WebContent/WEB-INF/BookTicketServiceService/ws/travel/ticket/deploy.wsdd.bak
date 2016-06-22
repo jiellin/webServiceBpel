@@ -1,0 +1,31 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from BookTicketServiceService WSDL service -->
+
+  <service name="BookTicketService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://ticket.travel.ws"/>
+      <parameter name="wsdlServiceElement" value="BookTicketServiceService"/>
+      <parameter name="schemaQualified" value="http://ticket.travel.ws"/>
+      <parameter name="wsdlServicePort" value="BookTicketService"/>
+      <parameter name="className" value="ws.travel.ticket.BookTicketServiceSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="BookTicketService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="bookTicket" qname="operNS:bookTicket" xmlns:operNS="http://ticket.travel.ws" returnQName="retNS:bookTicketReturn" xmlns:retNS="http://ticket.travel.ws" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:date" xmlns:pns="http://ticket.travel.ws" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:cityFrom" xmlns:pns="http://ticket.travel.ws" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:cityTo" xmlns:pns="http://ticket.travel.ws" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="bookTicket"/>
+
+  </service>
+</deployment>

@@ -1,0 +1,32 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from BookCarServiceService WSDL service -->
+
+  <service name="BookCarService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://car.travel.ws"/>
+      <parameter name="wsdlServiceElement" value="BookCarServiceService"/>
+      <parameter name="schemaQualified" value="http://car.travel.ws"/>
+      <parameter name="wsdlServicePort" value="BookCarService"/>
+      <parameter name="className" value="ws.travel.car.BookCarServiceSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="BookCarService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="bookCar" qname="operNS:bookCar" xmlns:operNS="http://car.travel.ws" returnQName="retNS:bookCarReturn" xmlns:retNS="http://car.travel.ws" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:size" xmlns:pns="http://car.travel.ws" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:isAT" xmlns:pns="http://car.travel.ws" type="tns:boolean" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:cityBook" xmlns:pns="http://car.travel.ws" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:cityBack" xmlns:pns="http://car.travel.ws" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="bookCar"/>
+
+  </service>
+</deployment>

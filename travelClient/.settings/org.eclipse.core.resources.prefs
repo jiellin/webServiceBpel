@@ -1,0 +1,17 @@
+eclipse.preferences.version=1
+encoding//src/ws/travel/car/BookCarService.java=UTF-8
+encoding//src/ws/travel/car/BookCarServiceService.java=UTF-8
+encoding//src/ws/travel/car/BookCarServiceServiceLocator.java=UTF-8
+encoding//src/ws/travel/car/BookCarServiceSoapBindingStub.java=UTF-8
+encoding//src/ws/travel/hotel/BookHotelService.java=UTF-8
+encoding//src/ws/travel/hotel/BookHotelServiceService.java=UTF-8
+encoding//src/ws/travel/hotel/BookHotelServiceServiceLocator.java=UTF-8
+encoding//src/ws/travel/hotel/BookHotelServiceSoapBindingStub.java=UTF-8
+encoding//src/ws/travel/spot/SpotGuideService.java=UTF-8
+encoding//src/ws/travel/spot/SpotGuideServiceService.java=UTF-8
+encoding//src/ws/travel/spot/SpotGuideServiceServiceLocator.java=UTF-8
+encoding//src/ws/travel/spot/SpotGuideServiceSoapBindingStub.java=UTF-8
+encoding//src/ws/travel/ticket/BookTicketService.java=UTF-8
+encoding//src/ws/travel/ticket/BookTicketServiceService.java=UTF-8
+encoding//src/ws/travel/ticket/BookTicketServiceServiceLocator.java=UTF-8
+encoding//src/ws/travel/ticket/BookTicketServiceSoapBindingStub.java=UTF-8

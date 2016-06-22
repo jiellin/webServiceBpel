@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://spot.travel.ws" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://spot.travel.ws" xmlns:intf="http://spot.travel.ws" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://spot.travel.ws" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="spotGuide">
+    <complexType>
+     <sequence>
+      <element name="spot" type="xsd:string"/>
+      <element name="isNational" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="spotGuideResponse">
+    <complexType>
+     <sequence>
+      <element name="spotGuideReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="spotGuideRequest">
+
+      <wsdl:part element="impl:spotGuide" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="spotGuideResponse">
+
+      <wsdl:part element="impl:spotGuideResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="SpotGuideService">
+
+      <wsdl:operation name="spotGuide">
+
+         <wsdl:input message="impl:spotGuideRequest" name="spotGuideRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:spotGuideResponse" name="spotGuideResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="SpotGuideServiceSoapBinding" type="impl:SpotGuideService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="spotGuide">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="spotGuideRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="spotGuideResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="SpotGuideServiceService">
+
+      <wsdl:port binding="impl:SpotGuideServiceSoapBinding" name="SpotGuideService">
+
+         <wsdlsoap:address location="http://10.77.100.119:8080/travel/services/SpotGuideService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

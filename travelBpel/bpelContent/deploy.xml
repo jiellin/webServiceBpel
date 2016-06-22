@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy xmlns="http://www.apache.org/ode/schemas/dd/2007/03" xmlns:car.travel.ws="http://car.travel.ws" xmlns:hotel.travel.ws="http://hotel.travel.ws" xmlns:sample="http://eclipse.org/bpel/sample" xmlns:spot.travel.ws="http://spot.travel.ws" xmlns:ticket.travel.ws="http://ticket.travel.ws">
+  <process name="sample:travelProcess">
+    <active>true</active>
+    <retired>false</retired>
+    <process-events generate="all"/>
+    <provide partnerLink="client">
+      <service name="sample:travelProcessService" port="travelProcessPort"/>
+    </provide>
+    <invoke partnerLink="ticketPL">
+      <service name="ticket.travel.ws:BookTicketServiceService" port="BookTicketService"/>
+    </invoke>
+    <invoke partnerLink="hotelPL">
+      <service name="hotel.travel.ws:BookHotelServiceService" port="BookHotelService"/>
+    </invoke>
+    <invoke partnerLink="carPL">
+      <service name="car.travel.ws:BookCarServiceService" port="BookCarService"/>
+    </invoke>
+    <invoke partnerLink="spotPL">
+      <service name="spot.travel.ws:SpotGuideServiceService" port="SpotGuideService"/>
+    </invoke>
+  </process>
+</deploy>
